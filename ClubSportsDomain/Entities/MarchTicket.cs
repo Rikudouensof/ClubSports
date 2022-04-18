@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ClubSportsDomain.Entities
 {
-  public class MarchTicket
+  public class MarchTicket : BaseDataEntity
   {
     public int Id { get; set; }
 
@@ -15,7 +15,7 @@ namespace ClubSportsDomain.Entities
     public string TicketRef { get; set; }
   }
 
-  public class MarchTicketType
+  public class MarchTicketType : BaseDataEntity
   {
     public int Id { get; set; }
 

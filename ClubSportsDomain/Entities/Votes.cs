@@ -4,11 +4,13 @@ using System.Text;
 
 namespace ClubSportsDomain.Entities
 {
-  public class PostCategory : BaseDataEntity
+  public class Votes : BaseDataEntity
   {
 
     public int Id { get; set; }
 
-    public string Name { get; set; }
+    public int VotingId { get; set; }
+
+    public string OptionId { get; set; }
   }
 }

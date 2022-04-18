@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ClubSportsDomain.Entities
 {
-  public class Match
+  public class Match : BaseDataEntity
   {
     public int Id { get; set; }
 
