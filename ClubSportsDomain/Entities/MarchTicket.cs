@@ -13,6 +13,10 @@ namespace ClubSportsDomain.Entities
     public decimal Price { get; set; }
 
     public string TicketRef { get; set; }
+
+    public int MatchId { get; set; }
+
+    public int MatchTicketTypeId { get; set; }
   }
 
   public class MarchTicketType : BaseDataEntity

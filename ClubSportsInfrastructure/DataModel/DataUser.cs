@@ -9,5 +9,6 @@ namespace ClubSportsInfrastructure.DataModel
 {
   public class DataUser : IdentityUser
   {
+    public DateTime DateJoind { get; set; }
   }
 }

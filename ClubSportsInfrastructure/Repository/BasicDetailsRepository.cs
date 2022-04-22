@@ -20,7 +20,7 @@ namespace ClubSportsInfrastructure.Repository
     
     public BasicDetails AddBasicDetail(BasicDetails basicDetail)
     {
-      throw new NotImplementedException();
+      
     }
 
     public BasicDetails basicDetails(BasicDetails basicDetail)

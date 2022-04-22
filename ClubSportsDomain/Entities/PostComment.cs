@@ -12,5 +12,8 @@ namespace ClubSportsDomain.Entities
 
     public string Content { get; set; }
 
+    public int PostId { get; set; }
+
   }
 }
+ 

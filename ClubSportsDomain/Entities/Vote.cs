@@ -9,8 +9,9 @@ namespace ClubSportsDomain.Entities
 
     public int Id { get; set; }
 
-    public int VotingId { get; set; }
+    public int VoteQuestionId { get; set; }
 
-    public string OptionId { get; set; }
+    public int VoteOptionId { get; set; }
   }
 }
+  

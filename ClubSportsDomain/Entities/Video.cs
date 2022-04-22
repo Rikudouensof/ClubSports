@@ -15,6 +15,7 @@ namespace ClubSportsDomain.Entities
 
     public string VideoLink { get; set; }
 
-
+    public int PostCategoryId { get; set; }
   }
 }
+  

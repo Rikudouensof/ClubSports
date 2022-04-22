@@ -14,7 +14,7 @@ namespace ClubSportsDomain.Entities
 
     public string ImageLink { get; set; }
 
-    public int ClubId { get; set; }
+    public int TeamId { get; set; }
 
   }
 }

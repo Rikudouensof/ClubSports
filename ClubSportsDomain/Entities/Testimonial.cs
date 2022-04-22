@@ -13,3 +13,4 @@ namespace ClubSportsDomain.Entities
     public string Description { get; set; }
   }
 }
+  

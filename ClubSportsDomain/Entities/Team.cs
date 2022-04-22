@@ -19,7 +19,7 @@ namespace ClubSportsDomain.Entities
     public string CurrentCoachName { get; set; }
 
     public string PresidentName { get; set; }
-
+     
     public int NumberOfChanpionship { get; set; }
 
     public int NumberOfCurrentPlayers { get; set; }

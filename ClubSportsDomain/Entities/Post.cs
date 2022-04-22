@@ -10,10 +10,11 @@ namespace ClubSportsDomain.Entities
 
     public string Name { get; set; }
 
-    public string ImageName { get; set; }
+    public string ImageLink { get; set; }
 
     public string Content { get; set; }
 
     public int PostCategoryId { get; set; }
   }
 }
+ 

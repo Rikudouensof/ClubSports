@@ -51,7 +51,7 @@ namespace ClubSportsDomain.Entities
     public int AwayTouches { get; set; }
 
     public int AwayTackles { get; set; }
-
+     
     public int AwayClearances { get; set; }
 
     public int AwayCorners { get; set; }
