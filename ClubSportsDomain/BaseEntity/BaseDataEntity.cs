@@ -10,5 +10,7 @@ namespace ClubSportsDomain.Entities
 
     public string UpdatedById { get; set; }
 
+    public bool isDeleted { get; set; }
+
   }
 }

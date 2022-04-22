@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ClubSportsDomain.Entities
 {
-  class Voting : BaseDataEntity
+  public class VoteQuestion : BaseDataEntity
   {
     public int Id { get; set; }
 
