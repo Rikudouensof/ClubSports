@@ -1,10 +1,11 @@
-﻿using System;
+﻿using ClubSportsDomain.EntityInterface;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ClubSportsDomain.Entities
 {
-  public class Testimonial : BaseDataEntity
+  public class Testimonial : BaseDataEntity, ITestimonial
   {
     public int Id { get; set; }
 

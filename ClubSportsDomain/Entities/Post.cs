@@ -1,10 +1,11 @@
-﻿using System;
+﻿using ClubSportsDomain.EntityInterface;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ClubSportsDomain.Entities
 {
-  public class Post : BaseDataEntity
+  public class Post : BaseDataEntity, IPost
   {
     public int Id { get; set; }
 

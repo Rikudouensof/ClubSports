@@ -1,10 +1,11 @@
-﻿using System;
+﻿using ClubSportsDomain.EntityInterface;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ClubSportsDomain.Entities
 {
-  public class Vote : BaseDataEntity
+  public class Vote : BaseDataEntity, IVote
   {
 
     public int Id { get; set; }

@@ -1,10 +1,11 @@
-﻿using System;
+﻿using ClubSportsDomain.EntityInterface;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ClubSportsDomain.Entities
 {
-  public class MarchTicket : BaseDataEntity
+  public class MarchTicket : BaseDataEntity, IMarchTicket
   {
     public int Id { get; set; }
 
@@ -19,7 +20,7 @@ namespace ClubSportsDomain.Entities
     public int MatchTicketTypeId { get; set; }
   }
 
-  public class MarchTicketType : BaseDataEntity
+  public class MarchTicketType : BaseDataEntity, IMarchTicketType
   {
     public int Id { get; set; }
 

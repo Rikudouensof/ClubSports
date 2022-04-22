@@ -1,10 +1,11 @@
-﻿using System;
+﻿using ClubSportsDomain.EntityInterface;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ClubSportsDomain.Entities
 {
-  public class MatchResult : BaseDataEntity
+  public class MatchResult : BaseDataEntity, IMatchResult
   {
 
     public int Id { get; set; }
@@ -51,7 +52,7 @@ namespace ClubSportsDomain.Entities
     public int AwayTouches { get; set; }
 
     public int AwayTackles { get; set; }
-     
+
     public int AwayClearances { get; set; }
 
     public int AwayCorners { get; set; }

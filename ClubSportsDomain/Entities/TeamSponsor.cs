@@ -1,10 +1,11 @@
-﻿using System;
+﻿using ClubSportsDomain.EntityInterface;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ClubSportsDomain.Entities
 {
-  public class TeamSponsor : BaseDataEntity
+  public class TeamSponsor : BaseDataEntity, ITeamSponsor
   {
     public int Id { get; set; }
 

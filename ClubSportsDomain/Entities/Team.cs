@@ -1,10 +1,11 @@
-﻿using System;
+﻿using ClubSportsDomain.EntityInterface;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ClubSportsDomain.Entities
 {
-  public class Team : BaseDataEntity
+  public class Team : BaseDataEntity, ITeam
   {
     public int Id { get; set; }
 
@@ -19,7 +20,7 @@ namespace ClubSportsDomain.Entities
     public string CurrentCoachName { get; set; }
 
     public string PresidentName { get; set; }
-     
+
     public int NumberOfChanpionship { get; set; }
 
     public int NumberOfCurrentPlayers { get; set; }
