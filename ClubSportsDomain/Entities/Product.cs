@@ -18,5 +18,6 @@ namespace ClubSportsDomain.Entities
     public string ImageLink { get; set; }
 
     public string Detail { get; set; }
+    public bool isAvailabele { get; set; }
   }
 }

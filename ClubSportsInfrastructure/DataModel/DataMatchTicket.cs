@@ -8,25 +8,20 @@ using System.Threading.Tasks;
 
 namespace ClubSportsInfrastructure.DataModel
 {
-  public class DataBasicDetails : IBasicDetails, IBaseDataEntity
+  public class DataMatchTicket : IMarchTicket, IBaseDataEntity
   {
+    public DataMatch Match { get; set; }
 
+    public DataMatchTicketType MatchTicketType { get; set; }
     public DataUser UpdatedBy { get; set; }
-    public string AboutUs { get; set; }
-    public string EmailAddress { get; set; }
-    public string FacebookLink { get; set; }
     public int Id { get; set; }
-    public string ImageLink { get; set; }
-    public string LinkedInLink { get; set; }
-    public string Name { get; set; }
-    public string PhoneNumber { get; set; }
-    public string PintrestLink { get; set; }
-    public string TwitterLink { get; set; }
+    public DateTime MarchDate { get; set; }
+    public int MatchId { get; set; }
+    public int MatchTicketTypeId { get; set; }
+    public decimal Price { get; set; }
+    public string TicketRef { get; set; }
     public DateTime DateUpdated { get; set; }
     public bool isDeleted { get; set; }
     public string UpdatedById { get; set; }
   }
-
-
-
 }

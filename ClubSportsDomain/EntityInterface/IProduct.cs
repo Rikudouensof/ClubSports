@@ -8,5 +8,7 @@
     string ImageLink { get; set; }
     string Name { get; set; }
     double Price { get; set; }
+
+     bool isAvailabele { get; set; }
   }
 }
