@@ -1,4 +1,5 @@
-﻿using ClubSportsDomain.BaseEntityInterface;
+﻿using ClubSportsApplication.IDataModels;
+using ClubSportsDomain.BaseEntityInterface;
 using ClubSportsDomain.EntityInterface;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ClubSportsInfrastructure.DataModel
 {
-  public class DataCoupon : ICoupon, IBaseDataEntity
+  public class DataCoupon : IDataCoupon
   {
 
     public DataCouponType CouponType { get; set; }

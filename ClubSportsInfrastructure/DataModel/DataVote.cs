@@ -1,4 +1,5 @@
-﻿using ClubSportsDomain.BaseEntityInterface;
+﻿using ClubSportsApplication.IDataModels;
+using ClubSportsDomain.BaseEntityInterface;
 using ClubSportsDomain.EntityInterface;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ClubSportsInfrastructure.DataModel
 {
-  public class DataVote : IVote, IBaseDataEntity
+  public class DataVote : IDataVote
   {
     public DataVoteOption VoteOption { get; set; }
     public DataVoteQuestion VoteQuestion { get; set; }

@@ -1,4 +1,5 @@
-﻿using ClubSportsDomain.BaseEntityInterface;
+﻿using ClubSportsApplication.IDataModels;
+using ClubSportsDomain.BaseEntityInterface;
 using ClubSportsDomain.EntityInterface;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ClubSportsInfrastructure.DataModel
 {
-  public class DataProduct : IProduct, IBaseDataEntity
+  public class DataProduct : IDataProduct
   {
     public DataCurrency Currency { get; set; }
     public DataUser UpdatedBy { get; set; }

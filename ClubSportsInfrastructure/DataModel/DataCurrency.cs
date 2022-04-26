@@ -1,11 +1,12 @@
-﻿using ClubSportsDomain.BaseEntityInterface;
+﻿using ClubSportsApplication.IDataModels;
+using ClubSportsDomain.BaseEntityInterface;
 using ClubSportsDomain.EntityInterface;
 using System;
 
 
 namespace ClubSportsInfrastructure.DataModel
 {
-  public class DataCurrency : ICurrency, IBaseDataEntity
+  public class DataCurrency : IDataCurrency
   {
     public DataUser UpdatedBy { get; set; }
     public int Id { get; set; }
