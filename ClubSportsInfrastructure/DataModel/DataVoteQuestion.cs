@@ -10,7 +10,6 @@ namespace ClubSportsInfrastructure.DataModel
 {
   public class DataVoteQuestion : IVoteQuestion, IBaseDataEntity
   {
-    public DataUser UpdatedBy { get; set; }
     public int Id { get; set; }
     public string Name { get; set; }
     public DateTime DateUpdated { get; set; }

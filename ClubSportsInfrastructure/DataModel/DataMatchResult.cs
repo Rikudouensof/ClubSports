@@ -2,6 +2,7 @@
 using ClubSportsDomain.EntityInterface;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,9 +13,7 @@ namespace ClubSportsInfrastructure.DataModel
   {
     public DataMatch Match { get; set; }
 
-    public DataMatchFormation HomeFormation { get; set; }
-
-    public DataMatchFormation AwayFormation { get; set; }
+    
     public DataUser UpdatedBy { get; set; }
     public int AwayClearances { get; set; }
     public int AwayCorners { get; set; }
@@ -42,6 +41,8 @@ namespace ClubSportsInfrastructure.DataModel
     public int HomeTackles { get; set; }
     public int HomeTouches { get; set; }
     public int HomeYellowCards { get; set; }
+
+    [Key]
     public int Id { get; set; }
     public int MatchId { get; set; }
     public DateTime DateUpdated { get; set; }
