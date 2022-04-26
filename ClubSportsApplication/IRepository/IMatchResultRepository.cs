@@ -1,4 +1,5 @@
-﻿using ClubSportsDomain.Entities;
+﻿using ClubSportsApplication.IDataModels;
+using ClubSportsDomain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,10 +8,10 @@ namespace ClubSportsApplication.IRepository
 {
   public interface IMatchResultRepository
   {
-    List<MatchResult> GetAllMatchResult();
-    MatchResult GetMatchResult(int Id);
+    IEnumerable<IDataMatchResult> GetAllMatchResult();
+    IDataMatchResult GetMatchResult(int Id);
 
-    MatchResult AddMatchResult(MatchResult match);
-    MatchResult EditMatchResult(MatchResult match); 
+    IDataMatchResult AddMatchResult(IDataMatchResult matchResult);
+    IDataMatchResult EditMatchResult(IDataMatchResult matchResult); 
   }
 }

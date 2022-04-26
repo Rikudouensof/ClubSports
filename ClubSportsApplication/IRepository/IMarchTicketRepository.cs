@@ -1,4 +1,5 @@
-﻿using ClubSportsDomain.Entities;
+﻿using ClubSportsApplication.IDataModels;
+using ClubSportsDomain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,11 +8,11 @@ namespace ClubSportsApplication.IRepository
 {
   public interface IMarchTicketRepository
   {
-    List<MarchTicket> GetAllMarchTickets();
-    MarchTicket GetMarchTicket(int Id);
+    IEnumerable<IDataMarchTicket> GetAllMarchTickets();
+    IDataMarchTicket GetMarchTicket(int Id);
 
-    MarchTicket AddMarchTicket(MarchTicket gallery);
-    MarchTicket EditMarchTicket(MarchTicket gallery);
+    IDataMarchTicket AddMarchTicket(IDataMarchTicket gallery);
+    IDataMarchTicket EditMarchTicket(IDataMarchTicket gallery);
   }
 
 }

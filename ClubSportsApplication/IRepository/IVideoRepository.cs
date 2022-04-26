@@ -1,4 +1,5 @@
-﻿using ClubSportsDomain.Entities;
+﻿using ClubSportsApplication.IDataModels;
+using ClubSportsDomain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,10 +8,10 @@ namespace ClubSportsApplication.IRepository
 {
   public interface IVideoRepository
   {
-    IEnumerable<Video> GetAllVideos();
-    Video GetVideo(int Id);
+    IEnumerable<IDataVideo> GetAllVideos();
+    IDataVideo GetVideo(int Id);
 
-    Video AddVideo(Video video);
-    Video EditVideo(Video video);
+    IDataVideo AddVideo(IDataVideo video);
+    IDataVideo EditVideo(IDataVideo video);
   }
 }

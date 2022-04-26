@@ -1,4 +1,5 @@
-﻿using ClubSportsDomain.Entities;
+﻿using ClubSportsApplication.IDataModels;
+using ClubSportsDomain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,10 +8,10 @@ namespace ClubSportsApplication.IRepository
 {
   public interface ICouponRepository
   {
-    List<Coupon> GetAllCoupons();
-    Coupon GetSingleCoupon(int Id);
+    IEnumerable<IDataCoupon> GetAllCoupons();
+    IDataCoupon GetSingleCoupon(int Id);
 
-    Coupon AddCoupon(Coupon coupon);
-    Coupon EditCoupon(Coupon coupon);
+    IDataCoupon AddCoupon(IDataCoupon coupon);
+    IDataCoupon EditCoupon(IDataCoupon coupon);
   }
 }

@@ -1,4 +1,5 @@
-﻿using ClubSportsDomain.Entities;
+﻿using ClubSportsApplication.IDataModels;
+using ClubSportsDomain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,13 +8,13 @@ namespace ClubSportsApplication.IRepository
 {
   public interface IBasicDetailsRepository
   {
-    List<BasicDetails> GetAllBasicDetails();
+    IEnumerable<IDataBasicDetails> GetAllBasicDetails();
 
-    BasicDetails AddBasicDetail(BasicDetails basicDetail);
+    IDataBasicDetails AddBasicDetail(IDataBasicDetails basicDetail);
 
-    BasicDetails basicDetails(BasicDetails basicDetail);
+    IDataBasicDetails basicDetails(IDataBasicDetails basicDetail);
 
-    BasicDetails GetSingleBasicDetail(int Id);
+    IDataBasicDetails GetSingleBasicDetail(int Id);
   }
 
 

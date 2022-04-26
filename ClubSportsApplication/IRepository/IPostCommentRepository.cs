@@ -1,4 +1,5 @@
-﻿using ClubSportsDomain.Entities;
+﻿using ClubSportsApplication.IDataModels;
+using ClubSportsDomain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,10 +8,10 @@ namespace ClubSportsApplication.IRepository
 {
   public interface IPostCommentRepository
   {
-    IEnumerable<PostComment> GetAllPostComments();
-    PostComment GetPostComment(int Id);
+    IEnumerable<IDataPostComment> GetAllPostComments();
+    IDataPostComment GetPostComment(int Id);
 
-    PostComment AddPostComment(PostComment postComment);
-    PostComment EditPostComment(PostComment postComment);
+    IDataPostComment AddPostComment(IDataPostComment postComment);
+    IDataPostComment EditPostComment(IDataPostComment postComment);
   }
 }

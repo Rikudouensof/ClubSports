@@ -1,4 +1,5 @@
-﻿using ClubSportsDomain.Entities;
+﻿using ClubSportsApplication.IDataModels;
+using ClubSportsDomain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,10 +8,10 @@ namespace ClubSportsApplication.IRepository
 {
   public interface ITeamMemberRepository
   {
-    IEnumerable<TeamMember> GetAllTeamMembers();
-    TeamMember GetTeamMember(int Id);
+    IEnumerable<IDataTeamMember> GetAllTeamMembers();
+    IDataTeamMember GetTeamMember(int Id);
 
-    TeamMember AddTeamMember(TeamMember teamMember);
-    TeamMember EditTeamMember(TeamMember teamMember);
+    IDataTeamMember AddTeamMember(IDataTeamMember teamMember);
+    IDataTeamMember EditTeamMember(IDataTeamMember teamMember);
   }
 }

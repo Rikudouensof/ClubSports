@@ -1,4 +1,5 @@
-﻿using ClubSportsDomain.Entities;
+﻿using ClubSportsApplication.IDataModels;
+using ClubSportsDomain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,10 +8,10 @@ namespace ClubSportsApplication.IRepository
 {
   public interface IPostCategoryRepository
   {
-    IEnumerable<PostCategory> GetAllPostCategories();
-    PostCategory GetPostCategory(int Id);
+    IEnumerable<IDataPostCategory> GetAllPostCategories();
+    IDataPostCategory GetPostCategory(int Id);
 
-    PostCategory AddPostCategory(PostCategory match);
-    PostCategory EditPostCategory(PostCategory match);
+    IDataPostCategory AddPostCategory(IDataPostCategory match);
+    IDataPostCategory EditPostCategory(IDataPostCategory match);
   }
 }

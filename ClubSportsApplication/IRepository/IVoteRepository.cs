@@ -1,4 +1,5 @@
-﻿using ClubSportsDomain.Entities;
+﻿using ClubSportsApplication.IDataModels;
+using ClubSportsDomain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,10 +8,10 @@ namespace ClubSportsApplication.IRepository
 {
   public interface IVoteRepository
   {
-    IEnumerable<Vote> GetAllVotes();
-    Vote GetVote(int Id);
+    IEnumerable<IDataVote> GetAllVotes();
+    IDataVote GetVote(int Id);
 
-    Vote AddVote(Vote vote);
-    Vote EditVote(Vote vote);
+    IDataVote AddVote(IDataVote vote);
+    IDataVote EditVote(IDataVote vote);
   }
 }

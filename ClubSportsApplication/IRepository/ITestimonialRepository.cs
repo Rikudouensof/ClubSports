@@ -1,4 +1,5 @@
-﻿using ClubSportsDomain.Entities;
+﻿using ClubSportsApplication.IDataModels;
+using ClubSportsDomain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,10 +8,10 @@ namespace ClubSportsApplication.IRepository
 {
   public interface ITestimonialRepository
   {
-    IEnumerable<Testimonial> GetAllTestimonials();
-    Testimonial GetTestimonial(int Id);
+    IEnumerable<IDataTestimonial> GetAllTestimonials();
+    IDataTestimonial GetTestimonial(int Id);
 
-    Testimonial AddTestimonial(Testimonial testimonial);
-    Testimonial EditTestimonial(Testimonial testimonial);
+    IDataTestimonial AddTestimonial(IDataTestimonial testimonial);
+    IDataTestimonial EditTestimonial(IDataTestimonial testimonial);
   }
 }
