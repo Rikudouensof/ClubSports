@@ -41,7 +41,7 @@ namespace ClubSportsInfrastructure.Repository
 
     public IDataTeamJersy GetTeamJersy(int Id)
     {
-      var data = _db.TeamJersies.OrderByDescending(m => m.DateUpdated);
+      var data = _db.TeamJersies.OrderByDescending(m => m.DateUpdated).Where(m => m.Id == Id).FirstOrDefault(); ;
       return data;
     }
   }

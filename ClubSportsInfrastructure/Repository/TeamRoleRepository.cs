@@ -39,7 +39,7 @@ namespace ClubSportsInfrastructure.Repository
 
     public IDataTeamRole GetVote(int Id)
     {
-      var data = _db.TeamRoles.OrderByDescending(m => m.DateUpdated);
+      var data = _db.TeamRoles.OrderByDescending(m => m.DateUpdated).Where(m => m.Id == Id).FirstOrDefault(); ;
       return data;
     }
   }

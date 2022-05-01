@@ -43,7 +43,7 @@ namespace ClubSportsInfrastructure.Repository
 
     public IDataPost GetMatchResult(int Id)
     {
-      var data = _db.Posts.OrderByDescending(m => m.DateUpdated);
+      var data = _db.Posts.OrderByDescending(m => m.DateUpdated).Where(m => m.Id == Id).FirstOrDefault(); ;
       return data;
     }
   }

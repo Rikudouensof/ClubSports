@@ -41,7 +41,7 @@ namespace ClubSportsInfrastructure.Repository
 
     public IDataTeam GetTeam(int Id)
     {
-      var data = _db.Teams.OrderByDescending(m => m.DateUpdated);
+      var data = _db.Teams.OrderByDescending(m => m.DateUpdated).Where(m => m.Id == Id).FirstOrDefault(); ;
       return data;
     }
   }

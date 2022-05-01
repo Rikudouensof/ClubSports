@@ -41,7 +41,7 @@ namespace ClubSportsInfrastructure.Repository
 
     public IDataTestimonial GetTestimonial(int Id)
     {
-      var data = _db.Testimonials.OrderByDescending(m => m.DateUpdated);
+      var data = _db.Testimonials.OrderByDescending(m => m.DateUpdated).Where(m => m.Id == Id).FirstOrDefault(); ;
       return data;
     }
   }

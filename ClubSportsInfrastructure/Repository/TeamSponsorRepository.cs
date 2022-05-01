@@ -40,9 +40,9 @@ namespace ClubSportsInfrastructure.Repository
 
     public IDataTeamSponsor GetTeamSponsor(int Id)
     {
-      var data = _db.TeamSponsors.OrderByDescending(m => m.DateUpdated);
+      var data = _db.TeamSponsors.OrderByDescending(m => m.DateUpdated).Where(m => m.Id == Id).FirstOrDefault(); ;
       return data;
     }
   }
-  }
 }
+

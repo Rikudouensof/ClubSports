@@ -43,7 +43,7 @@ namespace ClubSportsInfrastructure.Repository
 
     public IDataProduct GetProduct(int Id)
     {
-      var data = _db.SellableProducts.OrderByDescending(m => m.DateUpdated);
+      var data = _db.SellableProducts.OrderByDescending(m => m.DateUpdated).Where(m => m.Id == Id).FirstOrDefault(); ;
       return data;
     }
   }

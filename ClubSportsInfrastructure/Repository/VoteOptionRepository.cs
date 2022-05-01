@@ -42,7 +42,7 @@ namespace ClubSportsInfrastructure.Repository
 
     public IDataVoteOption GetVoteOption(int Id)
     {
-      var data = _db.VoteOptions.OrderByDescending(m => m.DateUpdated);
+      var data = _db.VoteOptions.OrderByDescending(m => m.DateUpdated).Where(m => m.Id == Id).FirstOrDefault(); ;
       return data;
     }
   }

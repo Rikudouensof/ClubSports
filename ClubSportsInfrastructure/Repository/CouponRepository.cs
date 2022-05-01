@@ -41,7 +41,7 @@ namespace ClubSportsInfrastructure.Repository
 
     public IDataCoupon GetSingleCoupon(int Id)
     {
-      var data = _db.Coupons.OrderByDescending(m => m.DateUpdated);
+      var data = _db.Coupons.OrderByDescending(m => m.DateUpdated).Where(m => m.Id == Id).FirstOrDefault(); ;
       return data;
     }
   }
