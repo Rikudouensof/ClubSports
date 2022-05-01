@@ -8,7 +8,7 @@ namespace ClubSportsApplication.IRepository
 {
   public interface ICurrencyRepository
   {
-    List<IDataCurrency> GetAllCurrencies();
+    IEnumerable<IDataCurrency> GetAllCurrencies();
     IDataCurrency GetCurrency(int Id);
 
     IDataCurrency AddCurrency(IDataCurrency currency);

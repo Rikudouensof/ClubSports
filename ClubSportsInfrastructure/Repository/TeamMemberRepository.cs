@@ -1,5 +1,8 @@
-﻿using ClubSportsApplication.IRepository;
+﻿using ClubSportsApplication.IDataModels;
+using ClubSportsApplication.IRepository;
 using ClubSportsDomain.Entities;
+using ClubSportsInfrastructure.Data;
+using ClubSportsInfrastructure.DataModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,24 +13,37 @@ namespace ClubSportsInfrastructure.Repository
 {
   public class TeamMemberRepository : ITeamMemberRepository
   {
-    public TeamMember AddTeamMember(TeamMember teamMember)
+
+    private readonly ApplicationDbContext _db;
+    public TeamMemberRepository(ApplicationDbContext db)
     {
-      throw new NotImplementedException();
+      _db = db;
     }
 
-    public TeamMember EditTeamMember(TeamMember teamMember)
+    public IDataTeamMember AddTeamMember(IDataTeamMember teamMember)
     {
-      throw new NotImplementedException();
+      _db.TeamMembers.Add((DataTeamMember)teamMember);
+      _db.SaveChanges();
+      return teamMember;
     }
 
-    public IEnumerable<TeamMember> GetAllTeamMembers()
+      public IDataTeamMember EditTeamMember(IDataTeamMember teamMember)
     {
-      throw new NotImplementedException();
+      _db.TeamMembers.Update((DataTeamMember)teamMember);
+      _db.SaveChanges();
+      return teamMember;
     }
 
-    public TeamMember GetTeamMember(int Id)
+    public IEnumerable<IDataTeamMember> GetAllTeamMembers()
     {
-      throw new NotImplementedException();
+      var data = _db.TeamMembers.OrderByDescending(m => m.DateUpdated);
+      return data;
+    }
+
+    public IDataTeamMember GetTeamMember(int Id)
+    {
+      var data = _db.TeamMembers.OrderByDescending(m => m.DateUpdated);
+      return data;
     }
   }
 }

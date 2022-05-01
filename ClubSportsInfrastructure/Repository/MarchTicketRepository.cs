@@ -1,5 +1,8 @@
-﻿using ClubSportsApplication.IRepository;
+﻿using ClubSportsApplication.IDataModels;
+using ClubSportsApplication.IRepository;
 using ClubSportsDomain.Entities;
+using ClubSportsInfrastructure.Data;
+using ClubSportsInfrastructure.DataModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,24 +13,38 @@ namespace ClubSportsInfrastructure.Repository
 {
   public class MarchTicketRepository : IMarchTicketRepository
   {
-    public MarchTicket AddMarchTicket(MarchTicket gallery)
+
+    private readonly ApplicationDbContext _db;
+    public MarchTicketRepository(ApplicationDbContext db)
     {
-      throw new NotImplementedException();
+      _db = db;
     }
 
-    public MarchTicket EditMarchTicket(MarchTicket gallery)
+
+    public IDataMarchTicket AddMarchTicket(IDataMarchTicket marchTicket)
     {
-      throw new NotImplementedException();
+      _db.MatchTickets.Add((DataMatchTicket)marchTicket);
+      _db.SaveChanges();
+      return marchTicket;
     }
 
-    public List<MarchTicket> GetAllMarchTickets()
+    public IDataMarchTicket EditMarchTicket(IDataMarchTicket marchTicket)
     {
-      throw new NotImplementedException();
+      _db.MatchTickets.Add((DataMatchTicket)marchTicket);
+      _db.SaveChanges();
+      return marchTicket;
     }
 
-    public MarchTicket GetMarchTicket(int Id)
+    public IEnumerable<IDataMarchTicket> GetAllMarchTickets()
     {
-      throw new NotImplementedException();
+      var data = _db.MatchTickets.OrderByDescending(m => m.DateUpdated);
+      return data;
+    }
+
+    public IDataMarchTicket GetMarchTicket(int Id)
+    {
+      var data = _db.MatchTickets.Where(m => m.Id == Id).FirstOrDefault();
+      return data;
     }
   }
 }

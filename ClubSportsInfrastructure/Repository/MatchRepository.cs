@@ -1,5 +1,8 @@
-﻿using ClubSportsApplication.IRepository;
+﻿using ClubSportsApplication.IDataModels;
+using ClubSportsApplication.IRepository;
 using ClubSportsDomain.Entities;
+using ClubSportsInfrastructure.Data;
+using ClubSportsInfrastructure.DataModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,24 +13,38 @@ namespace ClubSportsInfrastructure.Repository
 {
   public class MatchRepository : IMatchRepository
   {
-    public Match AddMarch(Match match)
+
+
+    private readonly ApplicationDbContext _db;
+    public MatchRepository(ApplicationDbContext db)
     {
-      throw new NotImplementedException();
+      _db = db;
     }
 
-    public Match EditMarch(Match match)
+    public IDataMatch AddMarch(IDataMatch match)
     {
-      throw new NotImplementedException();
+      _db.Matches.Add((DataMatch)match);
+      _db.SaveChanges();
+      return match;
     }
 
-    public List<Match> GetAllMarches()
+    public IDataMatch EditMarch(IDataMatch match)
     {
-      throw new NotImplementedException();
+      _db.Matches.Update((DataMatch)match);
+      _db.SaveChanges();
+      return match;
     }
 
-    public Match GetMarch(int Id)
+    public IEnumerable<IDataMatch> GetAllMarches()
     {
-      throw new NotImplementedException();
+      var data = _db.Matches.OrderByDescending(m => m.DateUpdated);
+      return data;
+    }
+
+    public IDataMatch GetMarch(int Id)
+    {
+      var data = _db.Matches.Where(m => m.Id == Id).FirstOrDefault();
+      return data;
     }
   }
 }

@@ -8,7 +8,7 @@ namespace ClubSportsApplication.IRepository
 {
   public interface IPostRepository
   {
-    List<IDataPost> GetAllMatchResult();
+    IEnumerable<IDataPost> GetAllMatchResult();
     IDataPost GetMatchResult(int Id);
 
     IDataPost AddMatchResult(IDataPost match);

@@ -1,5 +1,8 @@
-﻿using ClubSportsApplication.IRepository;
+﻿using ClubSportsApplication.IDataModels;
+using ClubSportsApplication.IRepository;
 using ClubSportsDomain.Entities;
+using ClubSportsInfrastructure.Data;
+using ClubSportsInfrastructure.DataModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,24 +13,38 @@ namespace ClubSportsInfrastructure.Repository
 {
   public class PostCategoryRepository : IPostCategoryRepository
   {
-    public PostCategory AddPostCategory(PostCategory match)
+
+    private readonly ApplicationDbContext _db;
+    public PostCategoryRepository(ApplicationDbContext db)
     {
-      throw new NotImplementedException();
+      _db = db;
+    }
+    public IDataPostCategory AddPostCategory(IDataPostCategory match)
+    {
+      _db.PostCategories.Add((DataPostCategory)match);
+      _db.SaveChanges();
+      return match;
     }
 
-    public PostCategory EditPostCategory(PostCategory match)
+    public IDataPostCategory EditPostCategory(IDataPostCategory match)
     {
-      throw new NotImplementedException();
+      _db.PostCategories.Add((DataPostCategory)match);
+      _db.SaveChanges();
+      return match;
     }
 
-    public IEnumerable<PostCategory> GetAllPostCategories()
+    public IEnumerable<IDataPostCategory> GetAllPostCategories()
     {
-      throw new NotImplementedException();
+      var data = _db.PostCategories.OrderByDescending(m => m.DateUpdated);
+      return data;
     }
 
-    public PostCategory GetPostCategory(int Id)
+
+    public IDataPostCategory GetPostCategory(int Id)
     {
-      throw new NotImplementedException();
+      var data = _db.PostCategories.Where(m => m.Id == Id).FirstOrDefault();
+      return data;
     }
+  
   }
 }

@@ -1,5 +1,8 @@
-﻿using ClubSportsApplication.IRepository;
+﻿using ClubSportsApplication.IDataModels;
+using ClubSportsApplication.IRepository;
 using ClubSportsDomain.Entities;
+using ClubSportsInfrastructure.Data;
+using ClubSportsInfrastructure.DataModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,24 +13,36 @@ namespace ClubSportsInfrastructure.Repository
 {
   public class TestimonialRepository : ITestimonialRepository
   {
-    public Testimonial AddTestimonial(Testimonial testimonial)
+
+    private readonly ApplicationDbContext _db;
+    public TestimonialRepository(ApplicationDbContext db)
     {
-      throw new NotImplementedException();
+      _db = db;
+    }
+    public IDataTestimonial AddTestimonial(IDataTestimonial testimonial)
+    {
+      _db.Testimonials.Add((DataTestimonial)testimonial);
+      _db.SaveChanges();
+      return testimonial;
     }
 
-    public Testimonial EditTestimonial(Testimonial testimonial)
+    public IDataTestimonial EditTestimonial(IDataTestimonial testimonial)
     {
-      throw new NotImplementedException();
+      _db.Testimonials.Update((DataTestimonial)testimonial);
+      _db.SaveChanges();
+      return testimonial;
     }
 
-    public IEnumerable<Testimonial> GetAllTestimonials()
+    public IEnumerable<IDataTestimonial> GetAllTestimonials()
     {
-      throw new NotImplementedException();
+      var data = _db.Testimonials.OrderByDescending(m => m.DateUpdated);
+      return data;
     }
 
-    public Testimonial GetTestimonial(int Id)
+    public IDataTestimonial GetTestimonial(int Id)
     {
-      throw new NotImplementedException();
+      var data = _db.Testimonials.OrderByDescending(m => m.DateUpdated);
+      return data;
     }
   }
 }

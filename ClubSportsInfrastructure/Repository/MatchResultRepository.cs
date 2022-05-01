@@ -1,5 +1,8 @@
-﻿using ClubSportsApplication.IRepository;
+﻿using ClubSportsApplication.IDataModels;
+using ClubSportsApplication.IRepository;
 using ClubSportsDomain.Entities;
+using ClubSportsInfrastructure.Data;
+using ClubSportsInfrastructure.DataModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,24 +13,37 @@ namespace ClubSportsInfrastructure.Repository
 {
   public class MatchResultRepository : IMatchResultRepository
   {
-    public MatchResult AddMatchResult(MatchResult match)
+
+    private readonly ApplicationDbContext _db;
+    public MatchResultRepository(ApplicationDbContext db)
     {
-      throw new NotImplementedException();
+      _db = db;
     }
 
-    public MatchResult EditMatchResult(MatchResult match)
+    public IDataMatchResult AddMatchResult(IDataMatchResult matchResult)
     {
-      throw new NotImplementedException();
+      _db.MatchResults.Add((DataMatchResult)matchResult);
+      _db.SaveChanges();
+      return matchResult;
     }
 
-    public List<MatchResult> GetAllMatchResult()
+    public IDataMatchResult EditMatchResult(IDataMatchResult matchResult)
     {
-      throw new NotImplementedException();
+      _db.MatchResults.Update((DataMatchResult)matchResult);
+      _db.SaveChanges();
+      return matchResult;
     }
 
-    public MatchResult GetMatchResult(int Id)
+    public IEnumerable<IDataMatchResult> GetAllMatchResult()
     {
-      throw new NotImplementedException();
+      var data = _db.MatchResults.OrderByDescending(m => m.DateUpdated);
+      return data;
+    }
+
+    public IDataMatchResult GetMatchResult(int Id)
+    {
+      var data = _db.MatchResults.Where(m => m.Id == Id).FirstOrDefault();
+      return data;
     }
   }
 }

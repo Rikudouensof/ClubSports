@@ -1,5 +1,8 @@
-﻿using ClubSportsApplication.IRepository;
+﻿using ClubSportsApplication.IDataModels;
+using ClubSportsApplication.IRepository;
 using ClubSportsDomain.Entities;
+using ClubSportsInfrastructure.Data;
+using ClubSportsInfrastructure.DataModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,24 +13,36 @@ namespace ClubSportsInfrastructure.Repository
 {
   public class CouponRepository : ICouponRepository
   {
-    public Coupon AddCoupon(Coupon coupon)
+
+    private readonly ApplicationDbContext _db;
+    public CouponRepository(ApplicationDbContext db)
     {
-      throw new NotImplementedException();
+      _db = db;
+    }
+    public IDataCoupon AddCoupon(IDataCoupon coupon)
+    {
+      _db.Coupons.Add((DataCoupon)coupon);
+      _db.SaveChanges();
+      return coupon;
     }
 
-    public Coupon EditCoupon(Coupon coupon)
+    public IDataCoupon EditCoupon(IDataCoupon coupon)
     {
-      throw new NotImplementedException();
+      _db.Coupons.Add((DataCoupon)coupon);
+      _db.SaveChanges();
+       return coupon;
     }
 
-    public List<Coupon> GetAllCoupons()
+    public IEnumerable<IDataCoupon> GetAllCoupons()
     {
-      throw new NotImplementedException();
+      var data = _db.Coupons.OrderByDescending(m => m.DateUpdated);
+      return data;
     }
 
-    public Coupon GetSingleCoupon(int Id)
+    public IDataCoupon GetSingleCoupon(int Id)
     {
-      throw new NotImplementedException();
+      var data = _db.Coupons.OrderByDescending(m => m.DateUpdated);
+      return data;
     }
   }
 }

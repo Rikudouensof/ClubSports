@@ -1,5 +1,8 @@
-﻿using ClubSportsApplication.IRepository;
+﻿using ClubSportsApplication.IDataModels;
+using ClubSportsApplication.IRepository;
 using ClubSportsDomain.Entities;
+using ClubSportsInfrastructure.Data;
+using ClubSportsInfrastructure.DataModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,24 +13,36 @@ namespace ClubSportsInfrastructure.Repository
 {
   public class TeamSponsorRepository : ITeamSponsorRepository
   {
-    public TeamSponsor AddTeamSponsor(TeamSponsor teamSponsor)
+    private readonly ApplicationDbContext _db;
+    public TeamSponsorRepository(ApplicationDbContext db)
     {
-      throw new NotImplementedException();
+      _db = db;
+    }
+    public IDataTeamSponsor AddTeamSponsor(IDataTeamSponsor teamSponsor)
+    {
+      _db.TeamSponsors.Add((DataTeamSponsor)teamSponsor);
+      _db.SaveChanges();
+      return teamSponsor;
     }
 
-    public TeamSponsor EditTeamSponsor(TeamSponsor teamSponsor)
+    public IDataTeamSponsor EditTeamSponsor(IDataTeamSponsor teamSponsor)
     {
-      throw new NotImplementedException();
+      _db.TeamSponsors.Update((DataTeamSponsor)teamSponsor);
+      _db.SaveChanges();
+      return teamSponsor;
     }
 
-    public IEnumerable<TeamSponsor> GetAllTeamSponsors()
+    public IEnumerable<IDataTeamSponsor> GetAllTeamSponsors()
     {
-      throw new NotImplementedException();
+      var data = _db.TeamSponsors.OrderByDescending(m => m.DateUpdated);
+      return data;
     }
 
-    public TeamSponsor GetTeamSponsor(int Id)
+    public IDataTeamSponsor GetTeamSponsor(int Id)
     {
-      throw new NotImplementedException();
+      var data = _db.TeamSponsors.OrderByDescending(m => m.DateUpdated);
+      return data;
     }
+  }
   }
 }

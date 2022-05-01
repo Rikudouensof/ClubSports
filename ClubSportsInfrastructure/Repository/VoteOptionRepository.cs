@@ -1,5 +1,8 @@
-﻿using ClubSportsApplication.IRepository;
+﻿using ClubSportsApplication.IDataModels;
+using ClubSportsApplication.IRepository;
 using ClubSportsDomain.Entities;
+using ClubSportsInfrastructure.Data;
+using ClubSportsInfrastructure.DataModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,24 +13,37 @@ namespace ClubSportsInfrastructure.Repository
 {
   public class VoteOptionRepository : IVoteOptionRepository
   {
-    public VoteOption AddVoteOption(VoteOption voteQuestion)
+    private readonly ApplicationDbContext _db;
+    public VoteOptionRepository(ApplicationDbContext db)
     {
-      throw new NotImplementedException();
+      _db = db;
     }
 
-    public VoteOption EditVoteOption(VoteOption voteQuestion)
+    public IDataVoteOption AddVoteOption(IDataVoteOption voteQuestion)
     {
-      throw new NotImplementedException();
+
+      _db.VoteOptions.Add((DataVoteOption)voteQuestion);
+      _db.SaveChanges();
+      return voteQuestion;
     }
 
-    public IEnumerable<VoteOption> GetAllVoteOptions()
+    public IDataVoteOption EditVoteOption(IDataVoteOption voteQuestion)
     {
-      throw new NotImplementedException();
+      _db.VoteOptions.Update((DataVoteOption)voteQuestion);
+      _db.SaveChanges();
+      return voteQuestion;
     }
 
-    public VoteOption GetVoteOption(int Id)
+    public IEnumerable<IDataVoteOption> GetAllVoteOptions()
     {
-      throw new NotImplementedException();
+      var data = _db.VoteOptions.OrderByDescending(m => m.DateUpdated);
+      return data;
+    }
+
+    public IDataVoteOption GetVoteOption(int Id)
+    {
+      var data = _db.VoteOptions.OrderByDescending(m => m.DateUpdated);
+      return data;
     }
   }
 }

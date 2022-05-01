@@ -1,5 +1,8 @@
-﻿using ClubSportsApplication.IRepository;
+﻿using ClubSportsApplication.IDataModels;
+using ClubSportsApplication.IRepository;
 using ClubSportsDomain.Entities;
+using ClubSportsInfrastructure.Data;
+using ClubSportsInfrastructure.DataModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,26 +11,40 @@ using System.Threading.Tasks;
 
 namespace ClubSportsInfrastructure.Repository
 {
+
+ 
   public class VoteQuestionRepository : IVoteQuestionRepository
   {
-    public VoteQuestion AddVoteQuestion(VoteQuestion voteQuestion)
+
+    private readonly ApplicationDbContext _db;
+    public VoteQuestionRepository(ApplicationDbContext db)
     {
-      throw new NotImplementedException();
+      _db = db;
+    }
+    public IDataVoteQuestion AddVoteQuestion(IDataVoteQuestion voteQuestion)
+    {
+      _db.VoteQuestions.Add((DataVoteQuestion)voteQuestion);
+      _db.SaveChanges();
+      return voteQuestion;
     }
 
-    public VoteQuestion EditVoteQuestion(VoteQuestion voteQuestion)
+    public IDataVoteQuestion EditVoteQuestion(IDataVoteQuestion voteQuestion)
     {
-      throw new NotImplementedException();
+      _db.VoteQuestions.Update((DataVoteQuestion)voteQuestion);
+      _db.SaveChanges();
+      return voteQuestion;
     }
 
-    public IEnumerable<VoteQuestion> GetAllVoteQuestions()
+    public IEnumerable<IDataVoteQuestion> GetAllVoteQuestions()
     {
-      throw new NotImplementedException();
+      var data = _db.VoteQuestions.OrderByDescending(m => m.DateUpdated);
+      return data;
     }
 
-    public VoteQuestion GetVoteQuestion(int Id)
+    public IDataVoteQuestion GetVoteQuestion(int Id)
     {
-      throw new NotImplementedException();
+      var data = _db.VoteQuestions.OrderByDescending(m => m.DateUpdated);
+      return data;
     }
   }
 }

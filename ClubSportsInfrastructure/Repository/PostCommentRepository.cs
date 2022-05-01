@@ -1,5 +1,8 @@
-﻿using ClubSportsApplication.IRepository;
+﻿using ClubSportsApplication.IDataModels;
+using ClubSportsApplication.IRepository;
 using ClubSportsDomain.Entities;
+using ClubSportsInfrastructure.Data;
+using ClubSportsInfrastructure.DataModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,24 +13,36 @@ namespace ClubSportsInfrastructure.Repository
 {
   public class PostCommentRepository : IPostCommentRepository
   {
-    public PostComment AddPostComment(PostComment postComment)
+
+    private readonly ApplicationDbContext _db;
+    public PostCommentRepository(ApplicationDbContext db)
     {
-      throw new NotImplementedException();
+      _db = db;
+    }
+    public IDataPostComment AddPostComment(IDataPostComment postComment)
+    {
+      _db.PostComments.Add((DataPostComment)postComment);  
+      _db.SaveChanges();
+      return postComment;
     }
 
-    public PostComment EditPostComment(PostComment postComment)
+    public IDataPostComment EditPostComment(IDataPostComment postComment)
     {
-      throw new NotImplementedException();
+      _db.PostComments.Update((DataPostComment)postComment);
+      _db.SaveChanges();
+      return postComment;
     }
 
-    public IEnumerable<PostComment> GetAllPostComments()
+    public IEnumerable<IDataPostComment> GetAllPostComments()
     {
-      throw new NotImplementedException();
+      var data = _db.PostComments.OrderByDescending(m => m.DateUpdated);
+      return data;
     }
 
-    public PostComment GetPostComment(int Id)
+    public IDataPostComment GetPostComment(int Id)
     {
-      throw new NotImplementedException();
+      var data = _db.PostComments.Where(m => m.Id == Id).FirstOrDefault();
+      return data;
     }
   }
 }

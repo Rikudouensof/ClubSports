@@ -1,5 +1,8 @@
-﻿using ClubSportsApplication.IRepository;
+﻿using ClubSportsApplication.IDataModels;
+using ClubSportsApplication.IRepository;
 using ClubSportsDomain.Entities;
+using ClubSportsInfrastructure.Data;
+using ClubSportsInfrastructure.DataModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,24 +13,38 @@ namespace ClubSportsInfrastructure.Repository
 {
   public class PostRepository : IPostRepository
   {
-    public Post AddMatchResult(Post match)
+
+    private readonly ApplicationDbContext _db;
+    public PostRepository(ApplicationDbContext db)
     {
-      throw new NotImplementedException();
+      _db = db;
     }
 
-    public Post EditMatchResult(Post match)
+
+    public IDataPost AddMatchResult(IDataPost post)
     {
-      throw new NotImplementedException();
+      _db.Posts.Add((DataPost)post);
+      _db.SaveChanges();
+      return post;
     }
 
-    public List<Post> GetAllMatchResult()
+    public IDataPost EditMatchResult(IDataPost post)
     {
-      throw new NotImplementedException();
+      _db.Posts.Update((DataPost)post);
+      _db.SaveChanges();
+      return post;
     }
 
-    public Post GetMatchResult(int Id)
+    public IEnumerable<IDataPost> GetAllMatchResult()
     {
-      throw new NotImplementedException();
+      var data = _db.Posts.OrderByDescending(m => m.DateUpdated);
+      return data;
+    }
+
+    public IDataPost GetMatchResult(int Id)
+    {
+      var data = _db.Posts.OrderByDescending(m => m.DateUpdated);
+      return data;
     }
   }
 }

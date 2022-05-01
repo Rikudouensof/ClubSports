@@ -1,5 +1,8 @@
-﻿using ClubSportsApplication.IRepository;
+﻿using ClubSportsApplication.IDataModels;
+using ClubSportsApplication.IRepository;
 using ClubSportsDomain.Entities;
+using ClubSportsInfrastructure.Data;
+using ClubSportsInfrastructure.DataModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,24 +13,36 @@ namespace ClubSportsInfrastructure.Repository
 {
   public class TeamJersyRepository : ITeamJersyRepository
   {
-    public TeamJersy AddTeamJersy(TeamJersy teamJersy)
+
+    private readonly ApplicationDbContext _db;
+    public TeamJersyRepository(ApplicationDbContext db)
     {
-      throw new NotImplementedException();
+      _db = db;
+    }
+    public IDataTeamJersy AddTeamJersy(IDataTeamJersy teamJersy)
+    {
+      _db.TeamJersies.Add((DataTeamJersy)teamJersy);
+      _db.SaveChanges();
+      return teamJersy;
     }
 
-    public TeamJersy EditTeamJersy(TeamJersy teamJersy)
+    public IDataTeamJersy EditTeamJersy(IDataTeamJersy teamJersy)
     {
-      throw new NotImplementedException();
+      _db.TeamJersies.Update((DataTeamJersy)teamJersy);
+      _db.SaveChanges();
+      return teamJersy;
     }
 
-    public IEnumerable<TeamJersy> GetAllTeamJersys()
+    public IEnumerable<IDataTeamJersy> GetAllTeamJersys()
     {
-      throw new NotImplementedException();
+      var data = _db.TeamJersies.OrderByDescending(m => m.DateUpdated);
+      return data;
     }
 
-    public TeamJersy GetTeamJersy(int Id)
+    public IDataTeamJersy GetTeamJersy(int Id)
     {
-      throw new NotImplementedException();
+      var data = _db.TeamJersies.OrderByDescending(m => m.DateUpdated);
+      return data;
     }
   }
 }

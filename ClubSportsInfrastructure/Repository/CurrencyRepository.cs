@@ -1,5 +1,8 @@
-﻿using ClubSportsApplication.IRepository;
+﻿using ClubSportsApplication.IDataModels;
+using ClubSportsApplication.IRepository;
 using ClubSportsDomain.Entities;
+using ClubSportsInfrastructure.Data;
+using ClubSportsInfrastructure.DataModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,24 +13,37 @@ namespace ClubSportsInfrastructure.Repository
 {
   public class CurrencyRepository : ICurrencyRepository
   {
-    public Currency AddCurrency(Currency currency)
+
+    private readonly ApplicationDbContext _db;
+    public CurrencyRepository(ApplicationDbContext db)
     {
-      throw new NotImplementedException();
+      _db = db;
     }
 
-    public Currency EditCurrency(Currency currency)
+    public IDataCurrency AddCurrency(IDataCurrency currency)
     {
-      throw new NotImplementedException();
+      _db.Currencies.Add((DataCurrency)currency);
+      _db.SaveChanges();
+      return currency;
     }
 
-    public List<Currency> GetAllCurrencies()
+    public IDataCurrency EditCurrency(IDataCurrency currency)
     {
-      throw new NotImplementedException();
+      _db.Currencies.Update((DataCurrency)currency);
+      _db.SaveChanges();
+      return currency;
     }
 
-    public Currency GetCurrency(int Id)
+    public IEnumerable<IDataCurrency> GetAllCurrencies()
     {
-      throw new NotImplementedException();
+      var data = _db.Currencies.OrderByDescending(m => m.DateUpdated);
+      return data;
+    }
+
+    public IDataCurrency GetCurrency(int Id)
+    {
+      var data = _db.Currencies.Where(m => m.Id == Id).FirstOrDefault();
+      return data; 
     }
   }
 }

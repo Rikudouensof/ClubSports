@@ -1,5 +1,8 @@
-﻿using ClubSportsApplication.IRepository;
+﻿using ClubSportsApplication.IDataModels;
+using ClubSportsApplication.IRepository;
 using ClubSportsDomain.Entities;
+using ClubSportsInfrastructure.Data;
+using ClubSportsInfrastructure.DataModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,24 +13,36 @@ namespace ClubSportsInfrastructure.Repository
 {
   public class TeamRepository : ITeamRepository
   {
-    public Team AddTeam(Team team)
+    private readonly ApplicationDbContext _db;
+    public TeamRepository(ApplicationDbContext db)
     {
-      throw new NotImplementedException();
+      _db = db;
+    }
+    public IDataTeam AddTeam(IDataTeam team)
+    {
+      _db.Teams.Add((DataTeam)team);
+      _db.SaveChanges();
+      return team;
     }
 
-    public Team EditTeam(Team team)
+    public IDataTeam EditTeam(IDataTeam team)
     {
-      throw new NotImplementedException();
+      _db.Teams.Update((DataTeam)team);
+      _db.SaveChanges();
+      return team;
     }
 
-    public IEnumerable<Team> GetAllTeams()
+    public IEnumerable<IDataTeam> GetAllTeams()
     {
-      throw new NotImplementedException();
+
+      var data = _db.Teams.OrderByDescending(m => m.DateUpdated);
+      return data;
     }
 
-    public Team GetTeam(int Id)
+    public IDataTeam GetTeam(int Id)
     {
-      throw new NotImplementedException();
+      var data = _db.Teams.OrderByDescending(m => m.DateUpdated);
+      return data;
     }
   }
 }

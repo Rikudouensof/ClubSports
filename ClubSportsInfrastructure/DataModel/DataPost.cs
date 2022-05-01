@@ -13,6 +13,9 @@ namespace ClubSportsInfrastructure.DataModel
   {
     public DataPostCategory PostCategory { get; set; }
     public DataUser UpdatedBy { get; set; }
+
+
+
     public string Content { get; set; }
     public int Id { get; set; }
     public string ImageLink { get; set; }

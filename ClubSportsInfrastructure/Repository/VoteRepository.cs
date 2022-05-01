@@ -1,5 +1,8 @@
-﻿using ClubSportsApplication.IRepository;
+﻿using ClubSportsApplication.IDataModels;
+using ClubSportsApplication.IRepository;
 using ClubSportsDomain.Entities;
+using ClubSportsInfrastructure.Data;
+using ClubSportsInfrastructure.DataModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,24 +13,38 @@ namespace ClubSportsInfrastructure.Repository
 {
   public class VoteRepository : IVoteRepository
   {
-    public Vote AddVote(Vote vote)
+
+    private readonly ApplicationDbContext _db;
+    public VoteRepository(ApplicationDbContext db)
     {
-      throw new NotImplementedException();
+      _db = db;
     }
 
-    public Vote EditVote(Vote vote)
+
+    public IDataVote AddVote(IDataVote vote)
     {
-      throw new NotImplementedException();
+      _db.Votes.Add((DataVote)vote);
+      _db.SaveChanges();
+      return vote;
     }
 
-    public IEnumerable<Vote> GetAllVotes()
+    public IDataVote EditVote(IDataVote vote)
     {
-      throw new NotImplementedException();
+      _db.Votes.Update((DataVote)vote);
+      _db.SaveChanges();
+      return vote;
     }
 
-    public Vote GetVote(int Id)
+    public IEnumerable<IDataVote> GetAllVotes()
     {
-      throw new NotImplementedException();
+      var data = _db.Votes.OrderByDescending(m => m.DateUpdated);
+      return data;
+    }
+
+    public IDataVote GetVote(int Id)
+    {
+      var data = _db.Votes.OrderByDescending(m => m.DateUpdated);
+      return data;
     }
   }
 }

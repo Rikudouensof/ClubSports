@@ -1,5 +1,8 @@
-﻿using ClubSportsApplication.IRepository;
+﻿using ClubSportsApplication.IDataModels;
+using ClubSportsApplication.IRepository;
 using ClubSportsDomain.Entities;
+using ClubSportsInfrastructure.Data;
+using ClubSportsInfrastructure.DataModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,24 +13,38 @@ namespace ClubSportsInfrastructure.Repository
 {
   public class GalleryRepository : IGalleryRepository
   {
-    public Gallery AddGallery(Gallery gallery)
+    private readonly ApplicationDbContext _db;
+    public GalleryRepository(ApplicationDbContext db)
     {
-      throw new NotImplementedException();
+      _db = db;
     }
 
-    public Gallery EditGallery(Gallery gallery)
+
+
+    public IDataGallery AddGallery(IDataGallery gallery)
     {
-      throw new NotImplementedException();
+      _db.Galleries.Add((DataGallery)gallery);
+      _db.SaveChanges();
+      return gallery;
     }
 
-    public List<Gallery> GetAllGalleries()
+    public IDataGallery EditGallery(IDataGallery gallery)
     {
-      throw new NotImplementedException();
+      _db.Galleries.Update((DataGallery)gallery);
+      _db.SaveChanges();
+      return gallery;
     }
 
-    public Gallery GetGallery(int Id)
+    public IEnumerable<IDataGallery> GetAllGalleries()
     {
-      throw new NotImplementedException();
+      var data = _db.Galleries.OrderByDescending(m => m.DateUpdated);
+      return data;
+    }
+
+    public IDataGallery GetGallery(int Id)
+    {
+      var data = _db.Galleries.Where(m => m.Id == Id).FirstOrDefault();
+      return data;
     }
   }
 }

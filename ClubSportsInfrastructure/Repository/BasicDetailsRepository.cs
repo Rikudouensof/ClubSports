@@ -1,6 +1,8 @@
-﻿using ClubSportsApplication.IRepository;
+﻿using ClubSportsApplication.IDataModels;
+using ClubSportsApplication.IRepository;
 using ClubSportsDomain.Entities;
 using ClubSportsInfrastructure.Data;
+using ClubSportsInfrastructure.DataModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,25 +19,31 @@ namespace ClubSportsInfrastructure.Repository
     {
       _db = db;
     }
-    
-    public BasicDetails AddBasicDetail(BasicDetails basicDetail)
+
+    public IDataBasicDetails AddBasicDetail(IDataBasicDetails basicDetail)
     {
-      throw new NotImplementedException();
+      _db.BasicDetails.Add((DataBasicDetails)basicDetail);
+      _db.SaveChanges();
+      return basicDetail;
     }
 
-    public BasicDetails basicDetails(BasicDetails basicDetail)
+    public IDataBasicDetails basicDetails(IDataBasicDetails basicDetail)
     {
-      throw new NotImplementedException();
+      _db.BasicDetails.Update((DataBasicDetails)basicDetail);
+      _db.SaveChanges();
+      return basicDetail;
     }
 
-    public List<BasicDetails> GetAllBasicDetails()
+    public IEnumerable<IDataBasicDetails> GetAllBasicDetails()
     {
-      throw new NotImplementedException();
+      var basicDetails = _db.BasicDetails.OrderByDescending(m => m.DateUpdated);
+      return basicDetails;
     }
 
-    public BasicDetails GetSingleBasicDetail(int Id)
+    public IDataBasicDetails GetSingleBasicDetail(int Id)
     {
-      throw new NotImplementedException();
+      var basicDetails = _db.BasicDetails.Where(m => m.Id == Id).FirstOrDefault();
+      return basicDetails;
     }
   }
 }

@@ -1,5 +1,8 @@
-﻿using ClubSportsApplication.IRepository;
+﻿using ClubSportsApplication.IDataModels;
+using ClubSportsApplication.IRepository;
 using ClubSportsDomain.Entities;
+using ClubSportsInfrastructure.Data;
+using ClubSportsInfrastructure.DataModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,24 +13,38 @@ namespace ClubSportsInfrastructure.Repository
 {
   public class ProductRepository : IProductRepository
   {
-    public Product AddProduct(Product product)
+
+    private readonly ApplicationDbContext _db;
+    public ProductRepository(ApplicationDbContext db)
     {
-      throw new NotImplementedException();
+      _db = db;
     }
 
-    public Product EditProduct(Product product)
+
+    public IDataProduct AddProduct(IDataProduct product)
     {
-      throw new NotImplementedException();
+      _db.SellableProducts.Add((DataProduct)product);
+      _db.SaveChanges();
+      return product; 
     }
 
-    public IEnumerable<Product> GetAllProducts()
+    public IDataProduct EditProduct(IDataProduct product)
     {
-      throw new NotImplementedException();
+      _db.SellableProducts.Update((DataProduct)product);
+      _db.SaveChanges();
+      return product;
     }
 
-    public Product GetProduct(int Id)
+    public IEnumerable<IDataProduct> GetAllProducts()
     {
-      throw new NotImplementedException();
+      var data = _db.SellableProducts.OrderByDescending(m => m.DateUpdated);
+      return data;
+    }
+
+    public IDataProduct GetProduct(int Id)
+    {
+      var data = _db.SellableProducts.OrderByDescending(m => m.DateUpdated);
+      return data;
     }
   }
 }

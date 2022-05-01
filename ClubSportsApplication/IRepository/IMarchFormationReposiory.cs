@@ -7,7 +7,7 @@ namespace ClubSportsApplication.IRepository
 {
   public interface IMarchFormationReposiory
   {
-    List<IDataMatchFormation> GetAllMarchFormations();
+    IEnumerable<IDataMatchFormation> GetAllMarchFormations();
     IDataMatchFormation GetMarchFormation(int Id);
 
     IDataMatchFormation AddMarchFormation(IDataMatchFormation gallery);

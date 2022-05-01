@@ -1,5 +1,8 @@
-﻿using ClubSportsApplication.IRepository;
+﻿using ClubSportsApplication.IDataModels;
+using ClubSportsApplication.IRepository;
 using ClubSportsDomain.Entities;
+using ClubSportsInfrastructure.Data;
+using ClubSportsInfrastructure.DataModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,26 +11,41 @@ using System.Threading.Tasks;
 
 namespace ClubSportsInfrastructure.Repository
 {
+
+
   public class CouponTypesRepository : ICouponTypesRepository
   {
-    public CouponTypes AddCouponType(CouponTypes coupontype)
+
+    private readonly ApplicationDbContext _db;
+    public CouponTypesRepository(ApplicationDbContext db)
     {
-      throw new NotImplementedException();
+      _db = db;
     }
 
-    public CouponTypes EditCouponType(CouponTypes coupontype)
+    public IDataCouponTypes AddCouponType(IDataCouponTypes coupontype)
     {
-      throw new NotImplementedException();
+      _db.CouponTypes.Add((DataCouponType)coupontype);
+      _db.SaveChanges();
+      return coupontype;
     }
 
-    public List<CouponTypes> GetAllCouponTypes()
+    public IDataCouponTypes EditCouponType(IDataCouponTypes coupontype)
     {
-      throw new NotImplementedException();
+      _db.CouponTypes.Update((DataCouponType)coupontype);
+      _db.SaveChanges();
+      return coupontype;
     }
 
-    public CouponTypes GetSingleCouponType(int Id)
+    public IEnumerable<IDataCouponTypes> GetAllCouponTypes()
     {
-      throw new NotImplementedException();
+      var data = _db.CouponTypes.OrderByDescending(m => m.DateUpdated);
+      return data;
+    }
+
+    public IDataCouponTypes GetSingleCouponType(int Id)
+    {
+      var data = _db.CouponTypes.Where(m => m.Id == Id).FirstOrDefault();
+      return data;
     }
   }
 }

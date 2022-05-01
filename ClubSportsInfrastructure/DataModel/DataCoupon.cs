@@ -14,6 +14,7 @@ namespace ClubSportsInfrastructure.DataModel
 
     public DataCouponType CouponType { get; set; }
     public DataUser UpdatedBy { get; set; }
+
     public int CouponTypeId { get; set; }
     public DateTime ExpiryDate { get; set; }
     public int Id { get; set; }
