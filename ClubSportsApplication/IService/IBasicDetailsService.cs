@@ -24,13 +24,13 @@ namespace ClubSportsApplication.IService
 
 
 
-    IEnumerable<IBasicDetails> GetAllBasicDetails();
+    IEnumerable<IBasicDetails> GetAllBasicDetails(string userId);
 
     IBasicDetails AddBasicDetail(IBasicDetails basicDetail, string userId);
 
     IBasicDetails basicDetails(IBasicDetails basicDetail, string userId);
 
-    IBasicDetails GetSingleBasicDetail(int Id);
+    IBasicDetails GetSingleBasicDetail(int Id, string userId);
 
     IDataBasicDetails DeleteSingleBasicDetail(int Id, string userId);
 
@@ -57,13 +57,13 @@ namespace ClubSportsApplication.IService
 
 
 
-    IEnumerable<ICoupon> UserGetAll();
+    IEnumerable<ICoupon> UserGetAll(string userId);
 
     ICoupon UserAddSingle(ICoupon data, string userId);
 
     ICoupon UserEditeSingle(ICoupon data, string userId);
 
-    ICoupon UserGetSingle(int Id);
+    ICoupon UserGetSingle(int Id, string userId);
 
     ICoupon UserDeleteSingle(int Id, string userId);
 
@@ -90,13 +90,13 @@ namespace ClubSportsApplication.IService
 
 
 
-    IEnumerable<ICouponTypes> UserGetAll();
+    IEnumerable<ICouponTypes> UserGetAll(string userId);
 
     ICouponTypes UserAddSingle(ICouponTypes data, string userId);
 
     ICouponTypes UserEditeSingle(ICouponTypes data, string userId);
 
-    ICouponTypes UserGetSingle(int Id);
+    ICouponTypes UserGetSingle(int Id, string userId);
 
     ICouponTypes UserDeleteSingle(int Id, string userId);
 
@@ -124,13 +124,13 @@ namespace ClubSportsApplication.IService
 
 
 
-    IEnumerable<ICurrency> UserGetAll();
+    IEnumerable<ICurrency> UserGetAll(string userId);
 
     ICurrency UserAddSingle(ICurrency data, string userId);
 
     ICurrency UserEditeSingle(ICurrency data, string userId);
 
-    ICurrency UserGetSingle(int Id);
+    ICurrency UserGetSingle(int Id, string userId);
 
     ICurrency UserDeleteSingle(int Id, string userId);
 
@@ -158,13 +158,13 @@ namespace ClubSportsApplication.IService
 
 
 
-    IEnumerable<IGallery> UserGetAll();
+    IEnumerable<IGallery> UserGetAll(string userId);
 
     IGallery UserAddSingle(IGallery data, string userId);
 
     IGallery UserEditeSingle(IGallery data, string userId);
 
-    IGallery UserGetSingle(int Id);
+    IGallery UserGetSingle(int Id, string userId);
 
     IGallery UserDeleteSingle(int Id, string userId);
 
@@ -191,13 +191,13 @@ namespace ClubSportsApplication.IService
 
 
 
-    IEnumerable<IMatchFormation> UserGetAll();
+    IEnumerable<IMatchFormation> UserGetAll(string userId);
 
     IMatchFormation UserAddSingle(IMatchFormation data, string userId);
 
     IMatchFormation UserEditeSingle(IMatchFormation data, string userId);
 
-    IMatchFormation UserGetSingle(int Id);
+    IMatchFormation UserGetSingle(int Id, string userId);
 
     IMatchFormation UserDeleteSingle(int Id, string userId);
 
@@ -225,13 +225,13 @@ namespace ClubSportsApplication.IService
 
 
 
-    IEnumerable<IMarchTicket> UserGetAll();
+    IEnumerable<IMarchTicket> UserGetAll(string userId);
 
     IMarchTicket UserAddSingle(IMarchTicket data, string userId);
 
     IMarchTicket UserEditeSingle(IMarchTicket data, string userId);
 
-    IMarchTicket UserGetSingle(int Id);
+    IMarchTicket UserGetSingle(int Id, string userId);
 
     IMarchTicket UserDeleteSingle(int Id, string userId);
 
@@ -259,13 +259,13 @@ namespace ClubSportsApplication.IService
 
 
 
-    IEnumerable<IMarchTicketType> UserGetAll();
+    IEnumerable<IMarchTicketType> UserGetAll(string userId);
 
     IMarchTicketType UserAddSingle(IMarchTicketType data, string userId);
 
     IMarchTicketType UserEditeSingle(IMarchTicketType data, string userId);
 
-    IMarchTicketType UserGetSingle(int Id);
+    IMarchTicketType UserGetSingle(int Id, string userId);
 
     IMarchTicketType UserDeleteSingle(int Id, string userId);
 
@@ -293,13 +293,13 @@ namespace ClubSportsApplication.IService
 
 
 
-    IEnumerable<IMatch> UserGetAll();
+    IEnumerable<IMatch> UserGetAll(string userId);
 
     IMatch UserAddSingle(IMatch data, string userId);
 
     IMatch UserEditeSingle(IMatch data, string userId);
 
-    IMatch UserGetSingle(int Id);
+    IMatch UserGetSingle(int Id, string userId);
 
     IMatch UserDeleteSingle(int Id, string userId);
 
@@ -326,13 +326,13 @@ namespace ClubSportsApplication.IService
 
 
 
-    IEnumerable<IMatchResult> UserGetAll();
+    IEnumerable<IMatchResult> UserGetAll(string userId);
 
     IMatchResult UserAddSingle(IMatchResult data, string userId);
 
     IMatchResult UserEditeSingle(IMatchResult data, string userId);
 
-    IMatchResult UserGetSingle(int Id);
+    IMatchResult UserGetSingle(int Id, string userId);
 
     IMatchResult UserDeleteSingle(int Id, string userId);
 
@@ -359,13 +359,13 @@ namespace ClubSportsApplication.IService
 
 
 
-    IEnumerable<IPostCategory> UserGetAll();
+    IEnumerable<IPostCategory> UserGetAll(string userId);
 
     IPostCategory UserAddSingle(IPostCategory data, string userId);
 
     IPostCategory UserEditeSingle(IPostCategory data, string userId);
 
-    IPostCategory UserGetSingle(int Id);
+    IPostCategory UserGetSingle(int Id, string userId);
 
     IPostCategory UserDeleteSingle(int Id, string userId);
 
@@ -393,13 +393,13 @@ namespace ClubSportsApplication.IService
 
 
 
-    IEnumerable<IPostComment> UserGetAll();
+    IEnumerable<IPostComment> UserGetAll(string userId);
 
     IPostComment UserAddSingle(IPostComment data, string userId);
 
     IPostComment UserEditeSingle(IPostComment data, string userId);
 
-    IPostComment UserGetSingle(int Id);
+    IPostComment UserGetSingle(int Id, string userId);
 
     IPostComment UserDeleteSingle(int Id, string userId);
 
@@ -413,13 +413,13 @@ namespace ClubSportsApplication.IService
   public interface IPostService
   {
 
-    IEnumerable<IDataPost> AdminGetAll();
+    IEnumerable<IDataPost> AdminGetAll(string userId);
 
     IDataPost AdminAddSingle(IDataPost data, string userId);
 
     IDataPost AdminEditSingle(IDataPost data, string userId);
 
-    IDataPost AdminGetSingle(int Id);
+    IDataPost AdminGetSingle(int Id, string userId);
 
     IDataPost AdminDeleteSingle(int Id, string userId);
 
@@ -460,13 +460,13 @@ namespace ClubSportsApplication.IService
 
 
 
-    IEnumerable<IProduct> UserGetAll();
+    IEnumerable<IProduct> UserGetAll(string userId);
 
     IProduct UserAddSingle(IProduct data, string userId);
 
     IProduct UserEditeSingle(IProduct data, string userId);
 
-    IProduct UserGetSingle(int Id);
+    IProduct UserGetSingle(int Id, string userId);
 
     IProduct UserDeleteSingle(int Id, string userId);
 
@@ -477,7 +477,7 @@ namespace ClubSportsApplication.IService
   }
 
 
-  //Here
+  
   public interface ITeamJersyService
   {
 
