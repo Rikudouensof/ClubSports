@@ -13,6 +13,6 @@ namespace ClubSportsDomain.Entities
 
     public string Sign { get; set; }
 
-    public string ShortName { get; set; }
+    public string ShortName { get; set; } 
   }
 }

@@ -20,3 +20,4 @@ namespace ClubSportsDomain.Entities
     public DateTime Date { get; set; }
   }
 }
+ 
