@@ -1,15 +1,14 @@
-﻿using System;
+﻿using ClubSportsDomain.DisplayEntity.Interface;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ClubSportsDomain.DisplayEntity
 {
-  public interface IDisplayAddImage
+  internal class DisplayAddImage : IDisplayAddImage
   {
-     int ValueId { get; set; }
-
-     string MaybeUserId { get; set; }
-
-     string ImageIs { get; set; }
+    public int? ValueId { get; set; }
+    public string MaybeUserId { get; set; }
+    public string ImageIs { get; set; }
   }
 }

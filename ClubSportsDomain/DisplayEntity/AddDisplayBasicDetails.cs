@@ -1,18 +1,12 @@
-﻿using ClubSportsApplication.IDataModels;
-using ClubSportsDomain.BaseEntityInterface;
-using ClubSportsDomain.EntityInterface;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace ClubSportsInfrastructure.DataModel
+namespace ClubSportsDomain.DisplayEntity
 {
-  public class DataBasicDetails : IDataBasicDetails
+  public class AddDisplayBasicDetails
   {
 
-    public DataUser UpdatedBy { get; set; }
     public string AboutUs { get; set; }
     public string EmailAddress { get; set; }
     public string FacebookLink { get; set; }
@@ -27,9 +21,4 @@ namespace ClubSportsInfrastructure.DataModel
     public bool isDeleted { get; set; }
     public string UpdatedById { get; set; }
   }
-
-  
-
-
-
 }

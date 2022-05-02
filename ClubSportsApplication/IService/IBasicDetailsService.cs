@@ -1,4 +1,6 @@
 ﻿using ClubSportsApplication.IDataModels;
+using ClubSportsDomain.DisplayEntity;
+using ClubSportsDomain.DisplayEntity.Interface;
 using ClubSportsDomain.Entities;
 using ClubSportsDomain.EntityInterface;
 using System;
@@ -12,11 +14,13 @@ namespace ClubSportsApplication.IService
 
     IEnumerable<IDataBasicDetails> AdminGetAllBasicDetails();
 
-    IDataBasicDetails AdminAddBasicDetail(IDataBasicDetails basicDetail, string userId);
+    IDataBasicDetails AdminAddBasicDetail(AddDisplayBasicDetails basicDetail, string userId);
 
-    IDataBasicDetails AdminAllbasicDetails(IDataBasicDetails basicDetail, string userId);
+    IDataBasicDetails AdminAllbasicDetails(AddDisplayBasicDetails basicDetail, string userId);
 
     IDataBasicDetails AdminGetSingleBasicDetail(int Id);
+
+    IDataBasicDetails AdminAddImage(DisplayAddImage data, string userId);
 
     IDataBasicDetails AdminDeleteSingleBasicDetail(int Id, string userId);
 
