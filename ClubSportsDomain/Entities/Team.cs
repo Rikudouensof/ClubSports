@@ -28,5 +28,6 @@ namespace ClubSportsDomain.Entities
     public int NumberOfTopPlayers { get; set; }
 
     public string ClubHistory { get; set; }
+    public string ClubLogo { get; set; }
   }
 }

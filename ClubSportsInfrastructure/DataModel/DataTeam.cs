@@ -25,5 +25,6 @@ namespace ClubSportsInfrastructure.DataModel
     public DateTime DateUpdated { get; set; }
     public bool isDeleted { get; set; }
     public string UpdatedById { get; set; }
+    public string ClubLogo { get; set; }
   }
 }
