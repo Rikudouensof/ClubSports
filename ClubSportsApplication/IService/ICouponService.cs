@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ClubSportsApplication.IService
 {
-  public interface ICouponService
+  public interface ICurrencyService
   {
 
     IEnumerable<IDataCoupon> AdminGetAll();
