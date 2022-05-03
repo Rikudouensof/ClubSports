@@ -14,13 +14,13 @@ namespace ClubSportsApplication.IService
 
     IEnumerable<IDataBasicDetails> AdminGetAllBasicDetails();
 
-    IDataBasicDetails AdminAddBasicDetail(AddDisplayBasicDetails basicDetail, string userId);
+    IDataBasicDetails AdminAddBasicDetail(IDataBasicDetails basicDetail, string userId);
 
-    IDataBasicDetails AdminAllbasicDetails(AddDisplayBasicDetails basicDetail, string userId);
+    IDataBasicDetails AdminAllbasicDetails(IDataBasicDetails basicDetail, string userId);
 
     IDataBasicDetails AdminGetSingleBasicDetail(int Id);
 
-    IDataBasicDetails AdminAddImage(DisplayAddImage data, string userId);
+    IDataBasicDetails AdminAddImage(IDataBasicDetails data, string userId);
 
     IDataBasicDetails AdminDeleteSingleBasicDetail(int Id, string userId);
 
@@ -30,13 +30,15 @@ namespace ClubSportsApplication.IService
 
     IEnumerable<IBasicDetails> GetAllBasicDetails(string userId);
 
-    IBasicDetails AddBasicDetail(IBasicDetails basicDetail, string userId);
+    IBasicDetails AddBasicDetail(IAddBasicDetails basicDetail, string userId);
 
-    IBasicDetails basicDetails(IBasicDetails basicDetail, string userId);
+    IBasicDetails basicDetails(IAddBasicDetails basicDetail, string userId);
 
     IBasicDetails GetSingleBasicDetail(int Id, string userId);
 
     IDataBasicDetails DeleteSingleBasicDetail(int Id, string userId);
+
+    IBasicDetails AddImage(IDisplayAddImage image, string userId);
 
 
 
@@ -164,16 +166,15 @@ namespace ClubSportsApplication.IService
 
     IEnumerable<IGallery> UserGetAll(string userId);
 
-    IGallery UserAddSingle(IGallery data, string userId);
+    IGallery UserAddSingle(IAddGallery data, string userId);
 
-    IGallery UserEditeSingle(IGallery data, string userId);
+    IGallery UserEditeSingle(IAddGallery data, string userId);
 
     IGallery UserGetSingle(int Id, string userId);
 
     IGallery UserDeleteSingle(int Id, string userId);
 
-
-
+    IGallery AddImage(IDisplayAddImage image, string userId);
 
 
   }
@@ -399,9 +400,9 @@ namespace ClubSportsApplication.IService
 
     IEnumerable<IPostComment> UserGetAll(string userId);
 
-    IPostComment UserAddSingle(IPostComment data, string userId);
+    IPostComment UserAddSingle(IAddPostComment data, string userId);
 
-    IPostComment UserEditeSingle(IPostComment data, string userId);
+    IPostComment UserEditeSingle(IAddPostComment data, string userId);
 
     IPostComment UserGetSingle(int Id, string userId);
 
@@ -433,16 +434,16 @@ namespace ClubSportsApplication.IService
 
     IEnumerable<IPost> UserGetAll();
 
-    IPost UserAddSingle(IPost data, string userId);
+    IPost UserAddSingle(IAddPost data, string userId);
 
-    IPost UserEditeSingle(IPost data, string userId);
+    IPost UserEditeSingle(IAddPost data, string userId);
 
     IPost UserGetSingle(int Id);
 
     IPost UserDeleteSingle(int Id, string userId);
 
 
-
+    IPost AddImage(IDisplayAddImage image, string userId);
 
 
   }
@@ -466,14 +467,15 @@ namespace ClubSportsApplication.IService
 
     IEnumerable<IProduct> UserGetAll(string userId);
 
-    IProduct UserAddSingle(IProduct data, string userId);
+    IProduct UserAddSingle(IAddProduct data, string userId);
 
-    IProduct UserEditeSingle(IProduct data, string userId);
+    IProduct UserEditeSingle(IAddProduct data, string userId);
 
     IProduct UserGetSingle(int Id, string userId);
 
     IProduct UserDeleteSingle(int Id, string userId);
 
+    IProduct AddImage(IDisplayAddImage image, string userId);
 
 
 
@@ -501,17 +503,15 @@ namespace ClubSportsApplication.IService
 
     IEnumerable<ITeamJersy> UserGetAll(string userid);
 
-    ITeamJersy UserAddSingle(ITeamJersy data, string userId);
+    ITeamJersy UserAddSingle(IAddTeamJersy data, string userId);
 
-    ITeamJersy UserEditeSingle(ITeamJersy data, string userId);
+    ITeamJersy UserEditeSingle(IAddTeamJersy data, string userId);
 
     ITeamJersy UserGetSingle(int Id, string userId);
 
     ITeamJersy UserDeleteSingle(int Id, string userId);
 
-
-
-
+    ITeamJersy AddImage(IDisplayAddImage image, string userId);
 
   }
 
@@ -535,16 +535,16 @@ namespace ClubSportsApplication.IService
 
     IEnumerable<ITeamMember> UserGetAll(string userid);
 
-    ITeamMember UserAddSingle(ITeamMember data, string userId);
+    ITeamMember UserAddSingle(IAddTeamMember data, string userId);
 
-    ITeamMember UserEditeSingle(ITeamMember data, string userId);
+    ITeamMember UserEditeSingle(IAddTeamMember data, string userId);
 
     ITeamMember UserGetSingle(int Id, string userId);
 
     ITeamMember UserDeleteSingle(int Id, string userId);
 
 
-
+    ITeamMember AddImage(IDisplayAddImage image, string userId);
 
 
   }
@@ -568,14 +568,15 @@ namespace ClubSportsApplication.IService
 
     IEnumerable<ITeam> UserGetAll(string userid);
 
-    ITeam UserAddSingle(ITeam data, string userId);
+    ITeam UserAddSingle(IAddTeam data, string userId);
 
-    ITeam UserEditeSingle(ITeam data, string userId);
+    ITeam UserEditeSingle(IAddTeam data, string userId);
 
     ITeam UserGetSingle(int Id, string userId);
 
     ITeam UserDeleteSingle(int Id, string userId);
 
+    ITeam AddImage(IDisplayAddImage image, string userId);
 
 
 
@@ -634,15 +635,15 @@ namespace ClubSportsApplication.IService
 
     IEnumerable<ITeamSponsor> UserGetAll(string userid);
 
-    ITeamSponsor UserAddSingle(ITeamSponsor data, string userId);
+    ITeamSponsor UserAddSingle(IAddTeamSponsor data, string userId);
 
-    ITeamSponsor UserEditeSingle(ITeamSponsor data, string userId);
+    ITeamSponsor UserEditeSingle(IAddTeamSponsor data, string userId);
 
     ITeamSponsor UserGetSingle(int Id, string userId);
 
     ITeamSponsor UserDeleteSingle(int Id, string userId);
 
-
+    ITeamSponsor AddImage(IDisplayAddImage image, string userId);
 
 
 
@@ -667,14 +668,15 @@ namespace ClubSportsApplication.IService
 
     IEnumerable<ITestimonial> UserGetAll(string userid);
 
-    ITestimonial UserAddSingle(ITestimonial data, string userId);
+    ITestimonial UserAddSingle(IAddVideo data, string userId);
 
-    ITestimonial UserEditeSingle(ITestimonial data, string userId);
+    ITestimonial UserEditeSingle(IAddVideo data, string userId);
 
     ITestimonial UserGetSingle(int Id, string userId);
 
     ITestimonial UserDeleteSingle(int Id, string userId);
 
+    ITestimonial AddImage(IDisplayAddImage video, string userId);
 
 
 

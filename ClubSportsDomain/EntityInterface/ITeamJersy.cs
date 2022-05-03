@@ -8,4 +8,12 @@
     string Name { get; set; }
     int TeamId { get; set; }
   }
+
+  public interface IAddTeamJersy
+  {
+    string Description { get; set; }
+    int Id { get; set; }
+    string Name { get; set; }
+    int TeamId { get; set; }
+  }
 }
